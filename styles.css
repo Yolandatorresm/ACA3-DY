@@ -1,0 +1,117 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --danger: #dc2626;
+  --text: #1e293b;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  padding: 14px 20px;
+  background: var(--accent);
+  color: #fff;
+  text-align: center;
+}
+header h1 { margin: 0; font-size: 20px }
+
+/* Login card */
+.card {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 22px;
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.card input, .card button {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+}
+.card input { border:1px solid #cbd5e1 }
+.card button { border:0; background:var(--accent); color:#fff; font-weight:700; cursor:pointer }
+.hint { font-size:13px; color:#64748b }
+.hidden { display:none !important }
+
+/* Dashboard */
+#dashboard { flex: 1 1 auto; display: flex; flex-direction: column }
+
+/* Main layout */
+.main-area {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding: 16px;
+  align-items: stretch;
+}
+
+/* Sidebar */
+.sidebar {
+  flex: 0 0 260px;
+  background: var(--card);
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  overflow-y: auto;
+}
+.sidebar form input, .sidebar form select, .sidebar form button {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+}
+.sidebar form button {
+  background: #16a34a;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Map */
+.map-area { flex: 1 1 auto; display:flex; flex-direction:column }
+#map { width: 100%; height: 65vh; min-height: 360px; border-radius: 8px; border:1px solid #e2e8f0 }
+
+/* Info panel */
+.info-panel {
+  flex: 0 0 320px;
+  background: var(--card);
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  overflow-y: auto;
+}
+button#btnExport { margin-top:10px; background:#16a34a; color:#fff }
+
+/* Alerts */
+.alert { color:var(--danger); font-weight:700; margin:6px 0 }
+
+/* Footer */
+footer { padding:12px; text-align:center; font-size:13px; color:#64748b }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-area { flex-direction: column }
+  .sidebar, .info-panel { width: 100%; flex: 0 0 auto }
+  #map { height: 50vh; min-height: 280px }
+}
+@media (max-width: 600px) {
+  header h1 { font-size: 16px }
+  #map { height: 45vh; min-height: 220px }
+  .sidebar, .info-panel { max-height: 220px }
+}
