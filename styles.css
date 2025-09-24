@@ -20,6 +20,7 @@ body {
   min-height: 100vh;
 }
 
+
 /* Header */
 header {
   padding: 14px 20px;
@@ -53,30 +54,32 @@ header h1 { margin: 0; font-size: 20px }
 /* Dashboard */
 #dashboard { flex: 1 1 auto; display: flex; flex-direction: column }
 
-/* Main layout */
-.main-area {
-  display: flex;
-  flex-direction: row;
+/* Main layout -> grid de 4 columnas */
+.main-grid {
+  display: grid;
+  grid-template-columns: 220px 220px 1.5fr 320px;
   gap: 16px;
   padding: 16px;
-  align-items: stretch;
+  align-items: start;
 }
 
-/* Sidebar */
-.sidebar {
-  flex: 0 0 260px;
+/* Paneles */
+.panel {
   background: var(--card);
   padding: 14px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  overflow-y: auto;
 }
-.sidebar form input, .sidebar form select, .sidebar form button {
+.panel.wide {
+  display: flex;
+  flex-direction: column;
+}
+.panel form input, .panel form select, .panel form button {
   width: 100%;
   margin-bottom: 8px;
   padding: 8px;
 }
-.sidebar form button {
+.panel form button {
   background: #16a34a;
   color: #fff;
   border: 0;
@@ -84,18 +87,15 @@ header h1 { margin: 0; font-size: 20px }
 }
 
 /* Map */
-.map-area { flex: 1 1 auto; display:flex; flex-direction:column }
-#map { width: 100%; height: 65vh; min-height: 360px; border-radius: 8px; border:1px solid #e2e8f0 }
+#map {
+  width: 100%;
+  height: 65vh;
+  min-height: 360px;
+  border-radius: 8px;
+  border:1px solid #e2e8f0;
+}
 
 /* Info panel */
-.info-panel {
-  flex: 0 0 320px;
-  background: var(--card);
-  padding: 14px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-  overflow-y: auto;
-}
 button#btnExport { margin-top:10px; background:#16a34a; color:#fff }
 
 /* Alerts */
@@ -105,13 +105,22 @@ button#btnExport { margin-top:10px; background:#16a34a; color:#fff }
 footer { padding:12px; text-align:center; font-size:13px; color:#64748b }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .main-area { flex-direction: column }
-  .sidebar, .info-panel { width: 100%; flex: 0 0 auto }
-  #map { height: 50vh; min-height: 280px }
+@media (max-width: 1200px) {
+  .main-grid { grid-template-columns: 1fr 1fr }
+  .panel.wide #map { height: 50vh }
 }
-@media (max-width: 600px) {
-  header h1 { font-size: 16px }
-  #map { height: 45vh; min-height: 220px }
-  .sidebar, .info-panel { max-height: 220px }
+@media (max-width: 768px) {
+  .main-grid { grid-template-columns: 1fr }
+  .panel.wide #map { height: 45vh }
 }
+
+.panel.wide form input,
+.panel.wide form select,
+.panel.wide form button {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+
+
