@@ -208,7 +208,7 @@ function stepSimulation() {
     bus.lat = latlon[0];
     bus.lon = latlon[1];
 
-    bus.occupancy = Math.max(5, Math.min(100, bus.occupancy + (Math.random() * 4 - 2)));
+    bus.occupancy = Math.max(5, Math.min(100, bus.occupancy + (Math.random() * 2 - 1)));
 
     const segCount = Math.max(1, route.length - 1);
     const s = bus.segmentIndex + bus.routeProgress;
@@ -267,7 +267,7 @@ function updateChart(){
   chart = new Chart(ctx, {
     type: 'bar',
     data: { labels: labels, datasets: [{ label: 'Ocupación promedio (%)', data: data, backgroundColor: '#2563eb' }] },
-    options: { scales: { y: { beginAtZero: true, max: 100 } } }
+    options: { scales: { y: { beginAtZero: true, max: 100,ticks: { stepSize: 10 } } } }
   });
 }
 
