@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mapa Transporte Bogotá</title>
+
+  <!-- Leaflet CSS + JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Plataforma de transporte de Bogotá</h1>
+  </header>
+
+  <!-- Login -->
+  <div id="loginCard" class="card">
+    <h2>Ingreso usuario</h2>
+    <input id="username" placeholder="Usuario" />
+    <input id="password" type="password" placeholder="Contraseña" />
+    <button id="btnLogin">Entrar</button>
+    <p class="hint">Usuario: <strong>usuario</strong> | Contraseña: <strong>usuario123</strong></p>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="hidden">
+    <main class="main-area">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div id="profile"></div>
+        <h3>Rutas / Buses</h3>
+        <ul id="routesList"></ul>
+        <h3>Alertas</h3>
+        <ul id="alertsList"></ul>
+
+        <!-- Formulario registrar bus -->
+        <h3>Registrar nuevo bus</h3>
+        <form id="busForm">
+          <input type="text" id="busId" placeholder="ID (ej: B200)" required />
+          <select id="busRoute" required>
+            <option value="">Ruta</option>
+            <option value="Carrera 7">Carrera 7</option>
+            <option value="NQS">NQS</option>
+            <option value="Avenida Caracas">Avenida Caracas</option>
+            <option value="Boyaca">Boyacá</option>
+            <option value="El dorado">El Dorado</option>
+          </select>
+          <button type="submit">Agregar Bus</button>
+        </form>
+      </aside>
+
+      <!-- Map -->
+      <section class="map-area">
+        <div id="map" class="map"></div>
+      </section>
+
+      <!-- Info Panel -->
+      <section class="info-panel">
+        <h3>Información del bus</h3>
+        <div id="busInfo">Haz clic en una marca para ver detalles.</div>
+        <button id="btnExport">Exportar datos (CSV)</button>
+
+        <!-- Gráfico -->
+        <h3>Ocupación promedio</h3>
+        <canvas id="occupancyChart"></canvas>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <small>© Proyecto plataforma de transporte en Bogotá</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
